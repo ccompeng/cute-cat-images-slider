@@ -1,0 +1,222 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to bottom, #0f0034 0%, #1d0067 40%, #250082 50%, #fff 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.container {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .arrow {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.4);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    text-align: center;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.arrow:hover {
+    background-color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+}
+
+.arrow:active {
+    transform: scale(0.9);
+}
+
+.container .right {
+    position: absolute;
+    right: 5%;
+}
+
+.right i {
+    position: absolute;
+    top: 13%;
+    right: 25%;
+    font-size: 24px;
+    color: #0f0034;
+}
+
+.container .left {
+    position: absolute;
+    left: 5%;
+}
+
+.left i {
+    position: absolute;
+    top: 13%;
+    left: 25%;
+    font-size: 24px;
+    color: #0f0034;
+}
+
+.container .img-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-container .left-img,
+.img-container .left-temp {
+    position: fixed;
+    left: 20%;
+}
+
+.left-img img,
+.left-temp img {
+    width: 180px;
+    height: 220px;
+    object-fit: fill;
+    box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.4), 2px 2px 16px 8px #250082,
+        -2px -2px 16px 8px #1d0067;
+    border-radius: 4px;
+    filter: blur(1.5px);
+    transform: perspective(500px) rotateY(30deg);
+}
+
+.img-container .main-img {
+    position: fixed;
+    z-index: 1;
+}
+
+.main-img img {
+    width: 340px;
+    height: 480px;
+    object-fit: fill;
+    margin: 0 6rem;
+    margin-top: -5rem;
+    box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.4), 4px 4px 16px 8px #250082,
+        -4px -4px 16px 8px #1d0067;
+    border-radius: 4px;
+}
+
+.img-container .right-img,
+.img-container .right-temp {
+    position: fixed;
+    right: 20%;
+}
+
+.right-temp {
+    z-index: -1;
+}
+
+.right-img img,
+.right-temp img {
+    width: 180px;
+    height: 220px;
+    object-fit: fill;
+    box-shadow: 0 0 4px 2px rgba(255, 255, 255, 0.4), 2px 2px 16px 8px #250082,
+        -2px -2px 16px 8px #1d0067, 1px 1px 2px #fff inset;
+    border-radius: 4px;
+    filter: blur(1.5px);
+    transform: perspective(500px) rotateY(-30deg);
+}
+
+.nextAnimMainImg {
+    animation: nextAnimMainImg 800ms;
+}
+
+.prevAnimMainImg {
+    animation: prevAnimMainImg 800ms;
+}
+
+.nextAnimRightImg {
+    animation: nextAnimRightImg 800ms;
+}
+
+.prevAnimLeftImg {
+    animation: prevAnimLeftImg 800ms;
+}
+
+/******** ANIMATIONS *********/
+
+@keyframes nextAnimMainImg {
+    0% {
+        transform: rotateY(0) translateX(0);
+        width: 340px;
+        height: 480px;
+        margin-top: -5rem;
+        filter: blur(0);
+    }
+
+    100% {
+        transform: perspective(600px) rotateY(50deg) translateX(-325px);
+        width: 80px;
+        height: 130px;
+        margin-top: 0;
+        filter: blur(1px);
+    }
+}
+
+@keyframes prevAnimMainImg {
+    0% {
+        transform: rotateY(0) translateX(0);
+        width: 340px;
+        height: 480px;
+        margin-top: -5rem;
+        filter: blur(0);
+    }
+
+    100% {
+        transform: perspective(600px) rotateY(-50deg) translateX(325px);
+        width: 80px;
+        height: 130px;
+        margin-top: 0;
+        filter: blur(1px);
+    }
+}
+
+@keyframes nextAnimRightImg {
+    0% {
+        transform: rotateY(-30deg) translateX(0);
+        width: 180px;
+        height: 220px;
+        margin-top: 0;
+        filter: blur(1.5px);
+    }
+
+    100% {
+        transform: rotateY(0) translateX(-275px);
+        width: 340px;
+        height: 480px;
+        margin-top: -5rem;
+        filter: blur(0);
+    }
+}
+
+@keyframes prevAnimLeftImg {
+    0% {
+        transform: rotateY(-30deg) translateX(0);
+        width: 180px;
+        height: 220px;
+        margin-top: 0;
+    }
+
+    100% {
+        transform: rotateY(0) translateX(275px);
+        width: 340px;
+        height: 480px;
+        margin-top: -5rem;
+    }
+}
